@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+
+<a href="{% url 'yourcart' %}" title="Your Cart">
+    <i class="flaticon-shop"></i>
+    <span>{{ carts|length }}</span>
+</a>
+
+{% endblock %}
+
+{% block title %}
+<h2 class="section-title">CART</h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="shopping-cart-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wishlist-table-area table-responsive">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="product-remove">Remove</th>
+                            <th class="product-image">Image</th>
+                            <th class="t-product-name">Product Name</th>
+                            <th class="product-edit">Edit</th>
+                            <th class="product-unit-price">Unit Price</th>
+                            <th class="product-quantity">Quantity</th>
+                            <th class="product-subtotal">Subtotal</th>
+                        </tr>
+                        </thead>
+
+
+
+                        {% for cart in carts %}
+
+
+                        <tbody>
+                        <tr>
+                            <td class="product-remove">
+                                <a href="{% url 'remove' cart.id %}">
+                                    <i class="flaticon-delete"></i>
+                                </a>
+                            </td>
+                            <td class="product-image">
+                                <a href="#">
+                                    <img src="{{ cart.image.url }}" alt="" width="104" height="104">
+                                </a>
+                            </td>
+                            <td class="t-product-name">
+                                <h3>
+                                    <a href="#">{{ cart.name }}</a>
+                                </h3>
+                            </td>
+                            <td class="product-edit">
+                                <p>
+                                    <a href="#">Edit</a>
+                                </p>
+                            </td>
+                            <td class="product-unit-price">
+                                <p>$ {{ cart.price }}</p>
+                            </td>
+                            <td class="product-quantity product-cart-details">
+                                <input type="number" id="nums" value="1">
+                            </td>
+                            <td class="product-quantity">
+                                <p>$ {{ cart.price }} </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="discount-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="subtotal-main-area">
+                    <div class="subtotal-area">
+                        <h2>SUBTOTAL<span>$ {{ sum.price__sum }}</span></h2>
+                    </div>
+                    <div class="subtotal-area">
+                        <h2>GRAND TOTAL<span>$ {{ sum.price__sum }}</span></h2>
+                    </div>
+                    <a href="{% url 'payment' %}">CHECKOUT</a>
+                    <p>Checkout With Multiple Addresses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
