@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h2 class="section-title">REGISTRATION</h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="login-account section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+                <form action="#" class="create-account-form" method="post">
+                    {% csrf_token %}
+                    <h2 class="heading-title">
+                        CREATE AN ACCOUNT
+                    </h2>
+                    <p class="form-row">
+                        <input type="text" name="username" id="username" placeholder="Your username:">
+                    </p>
+                    <p class="form-row">
+                        <input type="password" name="password1" id="password" placeholder="Password:">
+                    </p>
+                    <p class="form-row">
+                        <input type="password" name="password2" id="password1" placeholder="Re-enter Password:">
+                    </p>
+                    <div class="submit">
+                        <button name="submitcreate" id="submitcreate" type="submit" class="btn-default">
+                                    <span>
+                                        <i class="fa fa-user left"></i>
+                                        Create an account
+                                    </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--<h1>Sign Up!</h1>-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button class="btn btn-primary" type="submit">SignUp</button>-->
+<!--</form>-->
+
+{% endblock %}
